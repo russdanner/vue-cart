@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 
 Vue.use(Vuex);
+Vue.use(VueAxios, axios);
 
 export default new Vuex.Store({
   state: {
@@ -139,9 +142,19 @@ export default new Vuex.Store({
     SHOW_POPUP_CART: (state) => {
       state.showPopupCart = !state.showPopupCart;
     },
+    SET_PRODUCTS: (state, products) => {
+      state.notebooks = products.notebooks;
+      state.smartphones = products.smartphones;
+    },
   },
 
   actions: {
+    loadProducts({ commit }) {
+      axios
+        .get('/api/products.json?crafterSite=vue-cart')
+        .then(r => r.data)
+        .then((products) => { commit('SET_PRODUCTS', products); });
+    },
     addProduct: (context, product) => {
       context.commit('ADD_PRODUCT', product);
     },

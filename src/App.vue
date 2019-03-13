@@ -34,6 +34,9 @@ export default {
     popupcart,
     maskBg,
   },
+  mounted() {
+    this.$store.dispatch('loadProducts');
+  },
   methods: {
     ...mapActions([
       'showOrHiddenPopupCart',
