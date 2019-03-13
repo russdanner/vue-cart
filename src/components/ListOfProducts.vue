@@ -1,6 +1,10 @@
 <template>
   <ul class="listOfProducts">
-    <li v-for="(product, index) in products" :key="index" class="product">
+    <li v-for="(product, index) in products" :key="index" class="product"
+        :data-studio-component-path="product.cmsId"
+        data-studio-component="/component/product"
+        data-studio-ice=""
+        :data-studio-ice-path="product.cmsId">
       <img :src="product.image" alt="">
       <router-link to="/product-details">
         <h2 class="product-name"

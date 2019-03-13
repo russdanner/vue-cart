@@ -1,6 +1,9 @@
 <template>
-  <div class="product-box">
-    <div class="product-image">
+  <div class="product-box" :data-studio-component-path="currentProduct.cmsId"
+        data-studio-component="/component/product"
+        data-studio-ice=""
+        :data-studio-ice-path="currentProduct.cmsId">
+    <div class="product-image"  >
       <img :src="currentProduct.image" alt="">
       <stars :rate="rated(currentProduct.stars)" :totalReviews="currentProduct.totalReviews"/>
     </div>
